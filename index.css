@@ -10,3 +10,51 @@ body {
     height: 100px;
  }
 
+.global {
+    text-align: center;
+    color: teal;
+    background-color:rgba(206, 193, 193, 0.5);
+    width:500px;
+    margin:auto;
+    font-family: 'Graduate', cursive;
+    
+}
+table {
+    margin: auto;
+    border-collapse: collapse;
+
+}
+td {
+    border: 1px solid;
+}
+h1 {
+    font-size: 45px;
+}
+
+h3 {
+    font-size: large;
+}
+ul {
+    padding-bottom: 20px;
+    margin-right: 35px;
+}
+
+button {
+    margin-top:10px;
+    color:white;
+    border: none;
+    width: 110px;
+    height: 35px;
+    background-color: black;
+    box-shadow: 0 9px #999;
+    border-radius: 10px;
+    outline: none;
+}
+button:active {
+    box-shadow: 0 0px #999;
+    transform: translateY(9px);
+}
+
+button:hover {
+    background-color:#413c3c;
+}

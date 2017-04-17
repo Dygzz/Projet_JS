@@ -4,26 +4,47 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
 
 </head>
 <body>
+<div class="global">
 <h1>Machine à sous</h1>
 <h2>Partie 1</h2>
+<div class="images">
 <img src="image/img_0.jpg" alt="" id="1">
 <img src="image/img_1.jpg" alt="" id="2">
 <img src="image/img_2.jpg" alt="" id="3">
 <img src="image/img_3.jpg" alt="" id="4">
+</div>
 <button>Tourner</button>
-<span></span>
-<p></p>
+<h3></h3>
+<table>
+    <tr>
+        <td>pièce actuel</td>
+        <td class="pièce">20</td>
+    </tr>
+    <tr>
+        <td>nombre de parties gagnées</td>
+        <td class="gagné">0</td>
+    </tr>
+    <tr>
+        <td>nombres de parties perdues</td>
+        <td class="perdu">0</td>
+    </tr>
+</table>
+
 <ul>
 
 </ul>
+</div>
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script>
 var sous = 20;
 var NumPartie = 0;
-var ConteurDeSous = $("p");
+var ConteurDeSous = $(".pièce");
+var PartieGagnées = 0;
+var PartiePerdu =0;
 
 $('button').click(function () {
     sous -= 1;
@@ -44,21 +65,27 @@ $('button').click(function () {
 
     if (img1 == img2 && img2 == img3 && img3 == img4){
         sous += 10;
-        $('span').html('vous avez gagné');
+        PartieGagnées ++;
+        $('h3').html('vous avez gagné');
         ConteurDeSous.html(sous);
+        $('.gagné').html(PartieGagnées);
         $('ul').append("Partie " + NumPartie + ": Vous avez gagné 10 piece <br>")
     }
     else if(img1 == img2 && img1 == img3 || img1 == img3 && img1 == img4 || img1 == img2 && img1 == img4 ||
             img2 == img3 && img2 == img4) {
         sous += 5;
-        $('span').html('vous avez gagné');
+        PartieGagnées ++;
+        $('h3').html('vous avez gagné');
         ConteurDeSous.html(sous);
+        $('.gagné').html(PartieGagnées);
         $('ul').append("Partie " + NumPartie + ": Vous avez Gagnée 5 piece <br>")
 
     }
 
     else{
-        $('span').html('vous avez perdu');
+        $('h3').html('vous avez perdu');
+        PartiePerdu ++;
+        $('.perdu').html(PartiePerdu);
         $('ul').append("Partie " + NumPartie +  ": Vous avez perdue 1 piece <br>")
     }
 
@@ -71,5 +98,6 @@ $('button').click(function () {
 
 })
 </script>
+
 </body>
 </html>
