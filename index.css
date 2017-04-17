@@ -1,0 +1,12 @@
+body {
+    background-image: url(image/casinocoins.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+ img {
+    width: 100px;
+    height: 100px;
+ }
+
