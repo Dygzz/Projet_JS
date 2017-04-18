@@ -4,7 +4,9 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-
+.images {
+    margin-bottom: 20px;
+}
  img {
     width: 100px;
     height: 100px;
@@ -14,15 +16,23 @@ body {
     text-align: center;
     color: #2D6761;
     background-color:rgba(206, 193, 193, 0.7);
-    width:500px;
-    margin:auto;
-    font-family: 'Graduate', cursive;
     
+    font-family: 'Graduate', cursive;
+    padding-bottom: 25px;
+
 }
+
+.score {
+    color: #2D6761;
+    display: inline-block;
+    background-color:rgba(206, 193, 193, 0.7);
+    
+
+}
+
 table {
     margin: auto;
     border-collapse: collapse;
-
 }
 td {
     border: 1px solid;
@@ -34,13 +44,21 @@ h1 {
 h3 {
     font-size: large;
 }
+
 ul {
     padding-bottom: 20px;
     margin-right: 35px;
+    margin-left: 35px;
+    font-family: 'Graduate', cursive;
+}
+
+
+h4  {
+text-align: center;
 }
 
 button {
-    margin-top:10px;
+    margin-top:20px;
     color:white;
     border: none;
     width: 110px;
@@ -49,6 +67,7 @@ button {
     box-shadow: 0 9px #999;
     border-radius: 10px;
     outline: none;
+    font-family: 'Graduate', cursive;
 }
 button:active {
     box-shadow: 0 0px #999;
