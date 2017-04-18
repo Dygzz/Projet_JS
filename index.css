@@ -15,14 +15,26 @@ body {
     color: #2D6761;
     background-color:rgba(206, 193, 193, 0.7);
     width:500px;
-    margin:auto;
+    float: left;
+    margin-left: 500px;
+
     font-family: 'Graduate', cursive;
-    
+    padding-bottom: 25px;
+
 }
+
+.score {
+    float: right;
+    color: #2D6761;
+    display: inline-block;
+    background-color:rgba(206, 193, 193, 0.7);
+    margin-right: 40px;
+
+}
+
 table {
     margin: auto;
     border-collapse: collapse;
-
 }
 td {
     border: 1px solid;
@@ -34,9 +46,17 @@ h1 {
 h3 {
     font-size: large;
 }
+
 ul {
     padding-bottom: 20px;
     margin-right: 35px;
+    margin-left: 35px;
+    font-family: 'Graduate', cursive;
+}
+
+
+h4  {
+text-align: center;
 }
 
 button {
@@ -49,6 +69,7 @@ button {
     box-shadow: 0 9px #999;
     border-radius: 10px;
     outline: none;
+    font-family: 'Graduate', cursive;
 }
 button:active {
     box-shadow: 0 0px #999;

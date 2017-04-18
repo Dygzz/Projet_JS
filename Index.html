@@ -8,95 +8,101 @@
 
 </head>
 <body>
-<div class="global">
-<h1>Machine à sous</h1>
-<h2>Partie 1</h2>
-<div class="images">
-<img src="image/img_0.jpg" alt="" id="1">
-<img src="image/img_1.jpg" alt="" id="2">
-<img src="image/img_2.jpg" alt="" id="3">
-<img src="image/img_3.jpg" alt="" id="4">
-</div>
-<button>Tourner</button>
-<h3></h3>
-<table>
-    <tr>
-        <td>pièce actuel</td>
-        <td class="pièce">20</td>
-    </tr>
-    <tr>
-        <td>nombre de parties gagnées</td>
-        <td class="gagné">0</td>
-    </tr>
-    <tr>
-        <td>nombres de parties perdues</td>
-        <td class="perdu">0</td>
-    </tr>
-</table>
+<div>
+    <div class="global">
+        <h1>Machine à sous</h1>
+        <h2>Partie 1</h2>
+        <div class="images">
+            <img src="image/img_0.jpg" alt="" id="1">
+            <img src="image/img_1.jpg" alt="" id="2">
+            <img src="image/img_2.jpg" alt="" id="3">
+            <img src="image/img_3.jpg" alt="" id="4">
+        </div>
+        <button>Tourner</button>
+        <h3></h3>
+        <table>
+            <tr>
+                <td>pièce actuel</td>
+                <td class="pièce">20</td>
+            </tr>
+            <tr>
+                <td>nombre de parties gagnées</td>
+                <td class="gagné">0</td>
+            </tr>
+            <tr>
+                <td>nombres de parties perdues</td>
+                <td class="perdu">0</td>
+            </tr>
+        </table>
+    </div>
 
-<ul>
+    <div class="score">
 
-</ul>
+        <h4>Historique des Parties</h4>
+        <ul>
+
+        </ul>
+
+    </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
 <script>
-var sous = 20;
-var NumPartie = 0;
-var ConteurDeSous = $(".pièce");
-var PartieGagnées = 0;
-var PartiePerdu =0;
+    var sous = 20;
+    var NumPartie = 0;
+    var ConteurDeSous = $(".pièce");
+    var PartieGagnes = 0;
+    var PartiePerdu = 0;
 
-$('button').click(function () {
-    sous -= 1;
-    NumPartie += 1 ;
+    $('button').click(function () {
+        sous -= 1;
+        NumPartie += 1;
 
-    $('h2').html('Partie ' + NumPartie);
+        $('h2').html('Partie ' + NumPartie);
 
-    ConteurDeSous.html(sous);
-    var img1 = Math.floor(Math.random() * 4);
-    var img2 = Math.floor(Math.random() * 4);
-    var img3 = Math.floor(Math.random() * 4);
-    var img4 = Math.floor(Math.random() * 4);
-
-    $("#1").attr('src', "image/img_" + img1 + ".jpg");
-    $("#2").attr('src', "image/img_" + img2 + ".jpg");
-    $("#3").attr('src',"image/img_" + img3 + ".jpg" );
-    $("#4").attr('src', "image/img_" + img4 + ".jpg");
-
-    if (img1 == img2 && img2 == img3 && img3 == img4){
-        sous += 10;
-        PartieGagnées ++;
-        $('h3').html('vous avez gagné');
         ConteurDeSous.html(sous);
-        $('.gagné').html(PartieGagnées);
-        $('ul').append("Partie " + NumPartie + ": Vous avez gagné 10 piece <br>")
-    }
-    else if(img1 == img2 && img1 == img3 || img1 == img3 && img1 == img4 || img1 == img2 && img1 == img4 ||
+        var img1 = Math.floor(Math.random() * 4);
+        var img2 = Math.floor(Math.random() * 4);
+        var img3 = Math.floor(Math.random() * 4);
+        var img4 = Math.floor(Math.random() * 4);
+
+        $("#1").attr('src', "image/img_" + img1 + ".jpg");
+        $("#2").attr('src', "image/img_" + img2 + ".jpg");
+        $("#3").attr('src', "image/img_" + img3 + ".jpg");
+        $("#4").attr('src', "image/img_" + img4 + ".jpg");
+
+        if (img1 == img2 && img2 == img3 && img3 == img4) {
+            sous += 10;
+            PartieGagnes++;
+            $('h3').html('vous avez gagné');
+            ConteurDeSous.html(sous);
+            $('.gagné').html(PartieGagnes);
+            $('ul').append("Partie " + NumPartie + ": Vous avez gagné 10 piece <br>")
+        }
+        else if (img1 == img2 && img1 == img3 || img1 == img3 && img1 == img4 || img1 == img2 && img1 == img4 ||
             img2 == img3 && img2 == img4) {
-        sous += 5;
-        PartieGagnées ++;
-        $('h3').html('vous avez gagné');
-        ConteurDeSous.html(sous);
-        $('.gagné').html(PartieGagnées);
-        $('ul').append("Partie " + NumPartie + ": Vous avez Gagnée 5 piece <br>")
+            sous += 5;
+            PartieGagnes++;
+            $('h3').html('vous avez gagné');
+            ConteurDeSous.html(sous);
+            $('.gagné').html(PartieGagnes);
+            $('ul').append("Partie " + NumPartie + ": Vous avez Gagnée 5 piece <br>")
 
-    }
+        }
 
-    else{
-        $('h3').html('vous avez perdu');
-        PartiePerdu ++;
-        $('.perdu').html(PartiePerdu);
-        $('ul').append("Partie " + NumPartie +  ": Vous avez perdue 1 piece <br>")
-    }
+        else {
+            $('h3').html('vous avez perdu');
+            PartiePerdu++;
+            $('.perdu').html(PartiePerdu);
+            $('ul').append("Partie " + NumPartie + ": Vous avez perdue 1 piece <br>")
+        }
 
-    if (sous === 0){
-        alert("vous n'avez plus d\'argent")
-    }
-
-
+        if (sous === 0) {
+            alert("vous n'avez plus d\'argent")
+        }
 
 
-})
+    })
 </script>
 
 </body>
