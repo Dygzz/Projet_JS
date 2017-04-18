@@ -12,8 +12,8 @@ body {
 
 .global {
     text-align: center;
-    color: teal;
-    background-color:rgba(206, 193, 193, 0.5);
+    color: #2D6761;
+    background-color:rgba(206, 193, 193, 0.7);
     width:500px;
     margin:auto;
     font-family: 'Graduate', cursive;
