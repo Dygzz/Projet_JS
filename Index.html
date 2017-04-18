@@ -1,79 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        img {
-            width: 100px;
-            height: 100px;
-        }
-    </style>
-</head>
-<body>
-<h1>Machine à sous</h1>
-<h2>Partie 1</h2>
-<img src="image/img_0.jpg" alt="" id="1">
-<img src="image/img_1.jpg" alt="" id="2">
-<img src="image/img_2.jpg" alt="" id="3">
-<img src="image/img_3.jpg" alt="" id="4">
-<button>Tourner</button>
-<span></span>
-<p></p>
-<ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</ul>
-<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-<script>
-var sous = 20;
-var NumPartie = 0;
-var ConteurDeSous = $("p");
+        <title>Machine à sous</title>
+        <link rel="stylesheet" href="index.css">
+        <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-$('button').click(function () {
-    sous -= 1;
-    NumPartie += 1 ;
-
-    $('h2').html('Partie ' + NumPartie);
-
-    ConteurDeSous.html(sous);
-    var img1 = Math.floor(Math.random() * 4);
-    var img2 = Math.floor(Math.random() * 4);
-    var img3 = Math.floor(Math.random() * 4);
-    var img4 = Math.floor(Math.random() * 4);
-
-    $("#1").attr('src', "image/img_" + img1 + ".jpg");
-    $("#2").attr('src', "image/img_" + img2 + ".jpg");
-    $("#3").attr('src',"image/img_" + img3 + ".jpg" );
-    $("#4").attr('src', "image/img_" + img4 + ".jpg");
-
-    if (img1 == img2 && img2 == img3 && img3 == img4){
-        sous += 10;
-        $('span').html('vous avez gagné');
-        ConteurDeSous.html(sous);
-        $('ul').append("Partie " + NumPartie + ": Vous avez gagné 10 piece <br>")
-    }
-    else if(img1 == img2 && img1 == img3 || img1 == img3 && img1 == img4 || img1 == img2 && img1 == img4 ||
-            img2 == img3 && img2 == img4) {
-        sous += 5;
-        $('span').html('vous avez gagné');
-        ConteurDeSous.html(sous);
-        $('ul').append("Partie " + NumPartie + ": Vous avez Gagnée 5 piece <br>")
-
-    }
-
-    else{
-        $('span').html('vous avez perdu');
-        $('ul').append("Partie " + NumPartie +  ": Vous avez perdue 1 piece <br>")
-    }
-
-    if (sous === 0){
-        alert("vous n'avez plus d\'argent")
-    }
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
+    </head>
+    <body>
+
+        <div class="col-md-6 col-md-offset-1 global">
+            <h1>Machine à sous</h1>
+            <h2>Partie 1</h2>
+            <div class="images">
+                <img src="image/img_0.jpg" alt="" id="1">
+                <img src="image/img_1.jpg" alt="" id="2">
+                <img src="image/img_2.jpg" alt="" id="3">
+                <img src="image/img_3.jpg" alt="" id="4">
+            </div>
+            <button>Tourner</button>
+            <h3></h3>
+            <table>
+                <tr>
+                    <td>pièce actuel</td>
+                    <td class="pièce">20</td>
+                </tr>
+                <tr>
+                    <td>nombre de parties gagnées</td>
+                    <td class="gagné">0</td>
+                </tr>
+                <tr>
+                    <td>nombres de parties perdues</td>
+                    <td class="perdu">0</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-md-4 col-md-offset-1 score">
+
+            <h4>Historique des Parties</h4>
+            <ul>
+
+            </ul>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+        <script>
+            var sous = 20;
+            var NumPartie = 0;
+            var ConteurDeSous = $(".pièce");
+            var PartieGagnes = 0;
+            var PartiePerdu = 0;
+
+            $('button').click(function () {
+                sous -= 1;
+                NumPartie += 1;
+
+                $('h2').html('Partie ' + NumPartie);
+
+                ConteurDeSous.html(sous);
+                var img1 = Math.floor(Math.random() * 4);
+                var img2 = Math.floor(Math.random() * 4);
+                var img3 = Math.floor(Math.random() * 4);
+                var img4 = Math.floor(Math.random() * 4);
+
+                $("#1").attr('src', "image/img_" + img1 + ".jpg");
+                $("#2").attr('src', "image/img_" + img2 + ".jpg");
+                $("#3").attr('src', "image/img_" + img3 + ".jpg");
+                $("#4").attr('src', "image/img_" + img4 + ".jpg");
+
+                if (img1 == img2 && img2 == img3 && img3 == img4) {
+                    sous += 10;
+                    PartieGagnes++;
+                    $('h3').html('vous avez gagné');
+                    ConteurDeSous.html(sous);
+                    $('.gagné').html(PartieGagnes);
+                    $('ul').append("Partie " + NumPartie + ": Vous avez gagné 10 piece <br>")
+                }
+                else if (img1 == img2 && img1 == img3 || img1 == img3 && img1 == img4 || img1 == img2 && img1 == img4 ||
+                         img2 == img3 && img2 == img4) {
+                    sous += 5;
+                    PartieGagnes++;
+                    $('h3').html('vous avez gagné');
+                    ConteurDeSous.html(sous);
+                    $('.gagné').html(PartieGagnes);
+                    $('ul').append("Partie " + NumPartie + ": Vous avez Gagnée 5 piece <br>")
+
+                }
+
+                else {
+                    $('h3').html('vous avez perdu');
+                    PartiePerdu++;
+                    $('.perdu').html(PartiePerdu);
+                    $('ul').append("Partie " + NumPartie + ": Vous avez perdue 1 piece <br>")
+                }
+
+                if (sous === 0) {
+                    alert("vous n'avez plus d\'argent")
+                }
 
 
-})
-</script>
-</body>
+            })
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </body>
 </html>
