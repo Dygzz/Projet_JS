@@ -24,10 +24,7 @@ body {
 
 .score {
     color: #2D6761;
-    display: inline-block;
     background-color:rgba(206, 193, 193, 0.7);
-    
-
 }
 
 table {
@@ -51,6 +48,17 @@ ul {
     margin-left: 35px;
     font-family: 'Graduate', cursive;
 }
+
+li.gagner {
+    color:green;
+    list-style-type: none;
+}
+
+li.perdue {
+    color:darkred;
+    list-style-type: none;
+}
+
 
 
 h4  {
