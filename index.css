@@ -85,3 +85,25 @@ button:active {
 button:hover {
     background-color:#413c3c;
 }
+
+
+
+#win,#win2,#win3 {
+    font-size: 150px;
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background-color: rgba(0,0,0,0.5)
+}
+
+video {
+    margin-top: 15%;
+    margin-left: 30%;
+}
+video#video2 {
+    margin-top: 5%;
+    margin-left: 30%;
+}

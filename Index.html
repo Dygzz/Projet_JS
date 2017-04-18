@@ -51,6 +51,11 @@
 
             </ul>
         </div>
+        <div class="row col-md-8 col-md-offset-2">
+            <p id="win"> <video src="image/giphy.mp4" autoplay loop></video></p>
+            <p id="win2"> <video src="image/giphy2.mp4" autoplay loop></video></p>
+            <p id="win3"> <video src="image/giphy3.mp4" autoplay loop id="video2"></video></p>
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
         <script>
@@ -59,7 +64,9 @@
             var ConteurDeSous = $(".pièce");
             var PartieGagnes = 0;
             var PartiePerdu = 0;
-
+            $('#win').hide();
+            $('#win2').hide();
+            $('#win3').hide();
             function affichage (img1, img2, img3, img4) {
                 $("#1").attr('src', "image/img_" + img1 + ".jpg");
                 $("#2").attr('src', "image/img_" + img2 + ".jpg");
@@ -69,70 +76,81 @@
 
 
 
-                $('button').click(function () {
-                    sous -= 1;
-                    NumPartie += 1;
-                    var compteur = 0;
+            $('button').click(function () {
+                sous -= 1;
+                NumPartie += 1;
+                var compteur = 0;
 
 
-                    $('h2').html('Partie ' + NumPartie);
+                $('h2').html('Partie ' + NumPartie);
 
-                    ConteurDeSous.html(sous);
+                ConteurDeSous.html(sous);
 
 
-                    var interval = setInterval(function(){
-                            if(compteur > 10){
-                                img1 = Math.floor(Math.random() * 4);
-                                img2 = Math.floor(Math.random() * 4);
-                                img3 = Math.floor(Math.random() * 4);
-                                img4 = Math.floor(Math.random() * 4);
+                var interval = setInterval(function(){
+                    if(compteur > 10){
+                        img1 = Math.floor(Math.random() * 4);
+                        img2 = Math.floor(Math.random() * 4);
+                        img3 = Math.floor(Math.random() * 4);
+                        img4 = Math.floor(Math.random() * 4);
 
-                                affichage(img1, img2, img3, img4);
+                        affichage(img1, img2, img3, img4);
 
-                                if (img1 == img2 && img2 == img3 && img3 == img4) {
-                                    sous += 5;
-                                    PartieGagnes++;
-                                    $('h3').html('vous avez gagné');
-                                    ConteurDeSous.html(sous);
-                                    $('.gagné').html(PartieGagnes);
-                                    $('ul').prepend("<li class='gagner'>" +  "Partie " + NumPartie + ": Vous avez gagné 5 piece" + "</li>")
-                                }
-                                else if (img1 == img2 && img1 == img3 || img1 == img3 && img1 == img4 || img1 == img2 && img1 == img4 ||
-                                    img2 == img3 && img2 == img4) {
-                                    sous += 3;
-                                    PartieGagnes++;
-                                    $('h3').html('vous avez gagné');
-                                    ConteurDeSous.html(sous);
-                                    $('.gagné').html(PartieGagnes);
-                                    $('ul').prepend("<li class='gagner'>" + "Partie " + NumPartie + ": Vous avez Gagnée 3 piece" + "</li>")
+                        if (img1 == img2 && img2 == img3 && img3 == img4) {
+                            sous += 5;
+                            PartieGagnes++;
+                            $('h3').html('vous avez gagné');
+                            ConteurDeSous.html(sous);
+                            $('.gagné').html(PartieGagnes);
+                            $('ul').prepend("<li class='gagner'>" +  "Partie " + NumPartie + ": Vous avez gagné 5 piece" + "</li>")
+                            $('#win').show();
+                            setTimeout(function(){
+                                $('#win').hide();
 
-                                }
+                            }, 1000)
+                        }
+                        else if (img1 == img2 && img1 == img3 || img1 == img3 && img1 == img4 || img1 == img2 && img1 == img4 ||
+                                 img2 == img3 && img2 == img4) {
+                            sous += 3;
+                            PartieGagnes++;
+                            $('h3').html('vous avez gagné');
+                            ConteurDeSous.html(sous);
+                            $('.gagné').html(PartieGagnes);
+                            $('ul').prepend("<li class='gagner'>" + "Partie " + NumPartie + ": Vous avez Gagnée 3 piece" + "</li>")
+                            $('#win2').show();
+                            setTimeout(function(){
+                                $('#win2').hide();
 
-                                else {
-                                    $('h3').html('vous avez perdu');
-                                    PartiePerdu++;
-                                    $('.perdu').html(PartiePerdu);
-                                    $('ul').prepend("<li class='perdue'>" + "Partie " + NumPartie + ": Vous avez perdue 1 piece" + "</li>")
-                                }
+                            }, 1000)
 
-                                if (sous === 0) {
-                                    alert("vous n'avez plus d\'argent")
-                                }
+                        }
 
-                                clearInterval(interval);
-                            }
-                            else {
-                                compteur++;
-                                var img1 = Math.floor(Math.random() * 4);
-                                var img2 = Math.floor(Math.random() * 4);
-                                var img3 = Math.floor(Math.random() * 4);
-                                var img4 = Math.floor(Math.random() * 4);
+                        else {
+                            $('h3').html('vous avez perdu');
+                            PartiePerdu++;
+                            $('.perdu').html(PartiePerdu);
+                            $('ul').prepend("<li class='perdue'>" + "Partie " + NumPartie + ": Vous avez perdue 1 piece" + "</li>")
+                        }
 
-                                affichage(img1, img2, img3, img4);
+                        if (sous === 0) {
+                            alert("vous n'avez plus d\'argent")
+                            $('#win3').show();
+                        }
 
-                            }
-                    },100);
-                })
+                        clearInterval(interval);
+                    }
+                    else {
+                        compteur++;
+                        var img1 = Math.floor(Math.random() * 4);
+                        var img2 = Math.floor(Math.random() * 4);
+                        var img3 = Math.floor(Math.random() * 4);
+                        var img4 = Math.floor(Math.random() * 4);
+
+                        affichage(img1, img2, img3, img4);
+
+                    }
+                },100);
+            })
 
 
 
