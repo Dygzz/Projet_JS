@@ -24,10 +24,8 @@ body {
 
 .score {
     color: #2D6761;
-    display: inline-block;
     background-color:rgba(206, 193, 193, 0.7);
-    
-
+    overflow: auto;
 }
 
 table {
@@ -51,6 +49,17 @@ ul {
     margin-left: 35px;
     font-family: 'Graduate', cursive;
 }
+
+li.gagner {
+    color:green;
+    list-style-type: none;
+}
+
+li.perdue {
+    color:darkred;
+    list-style-type: none;
+}
+
 
 
 h4  {
@@ -76,4 +85,26 @@ button:active {
 
 button:hover {
     background-color:#413c3c;
+}
+
+
+
+#win,#win2,#lose {
+    font-size: 150px;
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background-color: rgba(0,0,0,0.5)
+}
+
+video {
+    margin-top: 15%;
+    margin-left: 30%;
+}
+video#video2 {
+    margin-top: 5%;
+    margin-left: 30%;
 }
