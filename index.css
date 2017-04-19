@@ -25,6 +25,7 @@ body {
 .score {
     color: #2D6761;
     background-color:rgba(206, 193, 193, 0.7);
+    overflow: auto;
 }
 
 table {
@@ -88,7 +89,7 @@ button:hover {
 
 
 
-#win,#win2,#win3 {
+#win,#win2,#lose {
     font-size: 150px;
     position: fixed;
     top: 0;
